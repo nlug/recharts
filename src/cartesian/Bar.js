@@ -54,6 +54,8 @@ class Bar extends Component {
     onAnimationStart: PropTypes.func,
     onAnimationEnd: PropTypes.func,
 
+    renderCompare: PropTypes.func,
+
     animationId: PropTypes.number,
     isAnimationActive: PropTypes.bool,
     animationBegin: PropTypes.number,
@@ -361,6 +363,14 @@ class Bar extends Component {
     }));
   }
 
+  renderCompareLine() {
+    const { renderCompare, data } = this.props;
+    if (renderCompare) {
+      return renderCompare(data);
+    }
+    return null;
+  }
+
   render() {
     const { hide, data, className, xAxis, yAxis, left, top,
       width, height, isAnimationActive, background, id } = this.props;
@@ -388,6 +398,7 @@ class Bar extends Component {
           {this.renderRectangles()}
         </Layer>
         {this.renderErrorBar()}
+        {this.renderCompareLine()}
         {(!isAnimationActive || isAnimationFinished) &&
           LabelList.renderCallByParent(this.props, data)}
       </Layer>

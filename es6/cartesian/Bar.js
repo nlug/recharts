@@ -285,21 +285,33 @@ var Bar = pureRender(_class = (_temp2 = _class2 = function (_Component) {
       });
     }
   }, {
+    key: 'renderCompareLine',
+    value: function renderCompareLine() {
+      var _props5 = this.props,
+          renderCompare = _props5.renderCompare,
+          data = _props5.data;
+
+      if (renderCompare) {
+        return renderCompare(data);
+      }
+      return null;
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _props5 = this.props,
-          hide = _props5.hide,
-          data = _props5.data,
-          className = _props5.className,
-          xAxis = _props5.xAxis,
-          yAxis = _props5.yAxis,
-          left = _props5.left,
-          top = _props5.top,
-          width = _props5.width,
-          height = _props5.height,
-          isAnimationActive = _props5.isAnimationActive,
-          background = _props5.background,
-          id = _props5.id;
+      var _props6 = this.props,
+          hide = _props6.hide,
+          data = _props6.data,
+          className = _props6.className,
+          xAxis = _props6.xAxis,
+          yAxis = _props6.yAxis,
+          left = _props6.left,
+          top = _props6.top,
+          width = _props6.width,
+          height = _props6.height,
+          isAnimationActive = _props6.isAnimationActive,
+          background = _props6.background,
+          id = _props6.id;
 
       if (hide || !data || !data.length) {
         return null;
@@ -333,6 +345,7 @@ var Bar = pureRender(_class = (_temp2 = _class2 = function (_Component) {
           this.renderRectangles()
         ),
         this.renderErrorBar(),
+        this.renderCompareLine(),
         (!isAnimationActive || isAnimationFinished) && LabelList.renderCallByParent(this.props, data)
       );
     }
@@ -367,6 +380,8 @@ var Bar = pureRender(_class = (_temp2 = _class2 = function (_Component) {
   })),
   onAnimationStart: PropTypes.func,
   onAnimationEnd: PropTypes.func,
+
+  renderCompare: PropTypes.func,
 
   animationId: PropTypes.number,
   isAnimationActive: PropTypes.bool,

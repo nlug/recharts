@@ -12154,21 +12154,33 @@ var Bar = Object(__WEBPACK_IMPORTED_MODULE_13__util_PureRender__["a" /* default 
       });
     }
   }, {
+    key: 'renderCompareLine',
+    value: function renderCompareLine() {
+      var _props5 = this.props,
+          renderCompare = _props5.renderCompare,
+          data = _props5.data;
+
+      if (renderCompare) {
+        return renderCompare(data);
+      }
+      return null;
+    }
+  }, {
     key: 'render',
     value: function render() {
-      var _props5 = this.props,
-          hide = _props5.hide,
-          data = _props5.data,
-          className = _props5.className,
-          xAxis = _props5.xAxis,
-          yAxis = _props5.yAxis,
-          left = _props5.left,
-          top = _props5.top,
-          width = _props5.width,
-          height = _props5.height,
-          isAnimationActive = _props5.isAnimationActive,
-          background = _props5.background,
-          id = _props5.id;
+      var _props6 = this.props,
+          hide = _props6.hide,
+          data = _props6.data,
+          className = _props6.className,
+          xAxis = _props6.xAxis,
+          yAxis = _props6.yAxis,
+          left = _props6.left,
+          top = _props6.top,
+          width = _props6.width,
+          height = _props6.height,
+          isAnimationActive = _props6.isAnimationActive,
+          background = _props6.background,
+          id = _props6.id;
 
       if (hide || !data || !data.length) {
         return null;
@@ -12202,6 +12214,7 @@ var Bar = Object(__WEBPACK_IMPORTED_MODULE_13__util_PureRender__["a" /* default 
           this.renderRectangles()
         ),
         this.renderErrorBar(),
+        this.renderCompareLine(),
         (!isAnimationActive || isAnimationFinished) && __WEBPACK_IMPORTED_MODULE_12__component_LabelList__["a" /* default */].renderCallByParent(this.props, data)
       );
     }
@@ -12236,6 +12249,8 @@ var Bar = Object(__WEBPACK_IMPORTED_MODULE_13__util_PureRender__["a" /* default 
   })),
   onAnimationStart: __WEBPACK_IMPORTED_MODULE_5_prop_types___default.a.func,
   onAnimationEnd: __WEBPACK_IMPORTED_MODULE_5_prop_types___default.a.func,
+
+  renderCompare: __WEBPACK_IMPORTED_MODULE_5_prop_types___default.a.func,
 
   animationId: __WEBPACK_IMPORTED_MODULE_5_prop_types___default.a.number,
   isAnimationActive: __WEBPACK_IMPORTED_MODULE_5_prop_types___default.a.bool,
